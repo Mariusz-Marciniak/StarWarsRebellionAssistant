@@ -1,0 +1,32 @@
+<div class="sw-wizard-panel">
+	<span [ngSwitch]="gameState()">
+		<ng-template ngSwitchCase="CHOOSE_SETUP">
+			<button class="sw-wizard-button" (click)="standardSetup()" i18n>
+				Standard setup
+			</button>
+			<button class="sw-wizard-button" (click)="advancedSetup()" i18n>
+				Advanced setup
+			</button>
+		</ng-template>
+		<ng-template ngSwitchCase="CHOOSE_IMPERIAL_DECK">
+			<button class="sw-wizard-button" (click)="standardDeck()" i18n>
+				Standard imperial deck
+			</button>
+			<button class="sw-wizard-button" (click)="roteDeck()" i18n>
+				RotE imperial deck
+			</button>
+		</ng-template>
+		<ng-template ngSwitchCase="GAME_IN_PROGRESS">
+			<button class="sw-wizard-button" (click)="guessBase()" i18n>
+				Guess rebel base
+			</button>
+			<button class="sw-wizard-button" (click)="standardSetup()" i18n>
+				xxx
+			</button>
+		</ng-template>
+	</span>
+	<hr/>
+	<button class="sw-wizard-button" (click)="newGame()" i18n>
+		New Game
+	</button>
+</div>

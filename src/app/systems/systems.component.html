@@ -1,0 +1,10 @@
+<div class="sw-map-panel">
+	<div class="sw-map-inner-panel">
+		<img class="sw-map" src="../../assets/map.png" />
+		<img *ngFor="let system of probeHand()" class="sw-mark-on-map" alt = "{{system.name}}" [ngStyle]="positionStyle(system)" src ="../../assets/imperial.png" />
+	</div>
+	<div class="sw-map-legend">
+		<img class="sw-map-mark" src="../../assets/imperial.png" />
+		<div class="sw-map-legend-desc" i18n> - system checked by Imperium</div>
+	</div>
+</div>

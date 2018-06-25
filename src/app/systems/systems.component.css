@@ -1,0 +1,37 @@
+.sw-map {
+	width:100%;
+}
+
+.sw-map-panel {
+	float: right;
+	width:80%;
+	background-color: #423d3d;
+	padding-bottom: 10px;
+}
+.sw-map-inner-panel {
+	margin: 10px;
+	position: relative;
+}
+
+.sw-map-legend {
+    float: left;
+	margin-top: 20px;
+    margin-left: 20px;
+}
+.sw-map-mark {
+	width: 15px;
+    height: 15px;	
+}
+
+.sw-mark-on-map {
+	width: 1rem;
+	height: 1rem;
+	position: absolute;
+}
+
+.sw-map-legend-desc {
+    float: right;
+    margin-left: 8px;
+    font-family: monospace;
+    color: #cabebe;
+}

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GameSetupService} from '../game-setup.service';
 import {GameStateService} from '../game-state.service';
-import {SelectOneComponent} from '../select-one/select-one.component';
 
 @Component({
   selector: 'app-wizard',
@@ -10,42 +9,45 @@ import {SelectOneComponent} from '../select-one/select-one.component';
 })
 export class WizardComponent implements OnInit {
 
-  constructor(private gameSetupService: GameSetupService, private gameStateService: GameStateService) {
+  constructor() {
   }
 
   ngOnInit() {
   }
 
   newGame() {
-    this.gameSetupService.newGame();
+    GameSetupService.newGame();
   }
 
   standardSetup() {
-    this.gameSetupService.standardSetup();
-    this.gameSetupService.setRebelBase();
-    this.gameStateService.imperialSystemsChosen();
+    GameSetupService.standardSetup();
+    GameSetupService.setRebelBase();
+    GameStateService.imperialSystemsChosen();
   }
 
   advancedSetup() {
-    this.gameSetupService.advancedSetup();
-    this.gameSetupService.setRebelBase();
-    this.gameStateService.imperialSystemsChosen();
+    GameSetupService.advancedSetup();
+    GameSetupService.setRebelBase();
+    GameStateService.imperialSystemsChosen();
   }
 
   standardDeck() {
-    this.gameStateService.setupDone();
+    GameStateService.setupDone();
   }
 
   roteDeck() {
-    this.gameStateService.setupDone();
+    GameStateService.setupDone();
   }
 
   gameState() {
-    return this.gameStateService.getGameState();
+    return GameStateService.getGameState();
   }
 
-  guessBase() {
+  sendProbe() {
 
+  }
+
+  sendTroops() {
   }
 
 }

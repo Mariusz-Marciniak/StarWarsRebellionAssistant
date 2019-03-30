@@ -1,25 +1,27 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameStateService {
 
-  constructor() { }
-  getGameState() {
-	return sessionStorage.getItem('sw-gameState');
+  constructor() {
   }
 
-  newGameStarted() {
-	sessionStorage.setItem('sw-gameState', 'CHOOSE_SETUP');
+  static getGameState() {
+    return sessionStorage.getItem('sw-gameState');
   }
 
-  imperialSystemsChosen() {
-	sessionStorage.setItem('sw-gameState', 'CHOOSE_IMPERIAL_DECK');
+  static newGameStarted() {
+    sessionStorage.setItem('sw-gameState', 'CHOOSE_SETUP');
   }
 
-  setupDone() {
-	sessionStorage.setItem('sw-gameState', 'GAME_IN_PROGRESS');
+  static imperialSystemsChosen() {
+    sessionStorage.setItem('sw-gameState', 'CHOOSE_IMPERIAL_DECK');
+  }
+
+  static setupDone() {
+    sessionStorage.setItem('sw-gameState', 'GAME_IN_PROGRESS');
   }
 
 }

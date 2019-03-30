@@ -1,13 +1,10 @@
 @import "../constants";
 
 .sw-map-panel {
-	float: right;
-	width:80%;
 	background-color: $panel-background-color;
 	padding-bottom: 10px;
 
   .sw-map-inner-panel {
-    margin: 10px;
     position: relative;
 
     .sw-map {

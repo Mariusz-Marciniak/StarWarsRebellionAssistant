@@ -1,4 +1,5 @@
 <div class="sw-wizard-panel">
+  <img class="logo" alt="Star Wars Rebellion Assistant" src="../../assets/logo.png" />
 	<span [ngSwitch]="gameState()">
 		<ng-template ngSwitchCase="CHOOSE_SETUP">
 			<button class="sw-wizard-button" (click)="standardSetup()" i18n>
@@ -17,11 +18,11 @@
 			</button>
 		</ng-template>
 		<ng-template ngSwitchCase="GAME_IN_PROGRESS">
-			<button class="sw-wizard-button" (click)="guessBase()" i18n>
-				Guess rebel base
+			<button class="sw-wizard-button" (click)="sendProbe()" i18n>
+				Send probe
 			</button>
-			<button class="sw-wizard-button" (click)="standardSetup()" i18n>
-				xxx
+			<button class="sw-wizard-button" (click)="sendTroops()" i18n>
+				Send troops
 			</button>
 		</ng-template>
 	</span>

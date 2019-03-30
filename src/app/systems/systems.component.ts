@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { GameSetupService } from '../game-setup.service';
-import { System } from './system';
+import {Component, OnInit} from '@angular/core';
+import {GameSetupService} from '../game-setup.service';
+import {System} from './system';
 
 @Component({
   selector: 'app-systems',
@@ -9,21 +9,21 @@ import { System } from './system';
 })
 
 export class SystemsComponent implements OnInit {
-  constructor(private gameSetupService: GameSetupService) { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
   probeHand(): System[] {
-	return this.gameSetupService.getProbeHand();
+    return GameSetupService.getProbeHand();
   }
 
-  positionStyle(system: System)  {
-	const styles = {
-		left : system.left,
-		top : system.top,
-	};
-	return styles;
+  positionStyle(system: System) {
+    return {
+      left: system.left,
+      top: system.top,
+    };
   }
 
 

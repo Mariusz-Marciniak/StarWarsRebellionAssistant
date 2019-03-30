@@ -1,0 +1,28 @@
+@import "../constants";
+
+.sw-wizard-panel {
+  display: inline-block;
+  width: 16%;
+  background-color: $panel-background-color;
+  padding: 10px;
+
+  .sw-wizard-button {
+    background: $menu-button-gradient-color-from;
+    background-image: -webkit-linear-gradient(top, $menu-button-gradient-color-from, $menu-button-gradient-color-to);
+    background-image: -moz-linear-gradient(top, $menu-button-gradient-color-from, $menu-button-gradient-color-to);
+    background-image: -ms-linear-gradient(top, $menu-button-gradient-color-from, $menu-button-gradient-color-to);
+    background-image: -o-linear-gradient(top, $menu-button-gradient-color-from, $menu-button-gradient-color-to);
+    background-image: linear-gradient(to bottom, $menu-button-gradient-color-from, $menu-button-gradient-color-to);
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    color: #ffffff;
+    font-family: Impact;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    width: 98%;
+    display: block;
+    margin-bottom: 3px;
+  }
+}

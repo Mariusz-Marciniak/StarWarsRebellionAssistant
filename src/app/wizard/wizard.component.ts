@@ -6,7 +6,7 @@ import { SelectOneComponent } from '../select-one/select-one.component';
 @Component({
   selector: 'app-wizard',
   templateUrl: './wizard.component.html',
-  styleUrls: ['./wizard.component.css']
+  styleUrls: ['./wizard.component.scss']
 })
 export class WizardComponent implements OnInit {
 
@@ -14,7 +14,7 @@ export class WizardComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   newGame() {
 	this.gameSetupService.newGame();
   }
@@ -38,7 +38,7 @@ export class WizardComponent implements OnInit {
 	return this.gameStateService.getGameState();
   }
   guessBase() {
-	
+
   }
 
 }

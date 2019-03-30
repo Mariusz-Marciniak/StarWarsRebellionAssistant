@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { GameSetupService } from '../game-setup.service'
-import { System } from './system'
+import { GameSetupService } from '../game-setup.service';
+import { System } from './system';
 
 @Component({
   selector: 'app-systems',
   templateUrl: './systems.component.html',
-  styleUrls: ['./systems.component.css']
+  styleUrls: ['./systems.component.scss']
 })
 
 export class SystemsComponent implements OnInit {
@@ -13,18 +13,18 @@ export class SystemsComponent implements OnInit {
 
   ngOnInit() {
   }
-  
-  probeHand() : System[] {
+
+  probeHand(): System[] {
 	return this.gameSetupService.getProbeHand();
   }
 
   positionStyle(system: System)  {
-	let styles = {
-		'left' : system.left,
-		'top' : system.top,
+	const styles = {
+		left : system.left,
+		top : system.top,
 	};
-	return styles
+	return styles;
   }
 
-  
+
 }

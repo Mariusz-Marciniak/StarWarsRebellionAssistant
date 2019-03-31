@@ -1,0 +1,26 @@
+@import "../constants";
+
+$sidekick-width: 500px;
+$out-of-view-position: 100%;
+$in-view-position: calc(100% - #{$sidekick-width});
+
+.sidekick-main {
+  position: fixed;
+  background-color: $panel-background-color;
+  top: $body-margin;
+  z-index: 10;
+  padding: 10px;
+  min-height: calc(100vh - 20px - 2*#{$body-margin});
+  width: $sidekick-width;
+  min-width: $sidekick-width;
+  max-width: $sidekick-width;
+  color: #ffffff;
+
+  .close-button {
+    cursor: pointer;
+    display: inline-block;
+    font-family: sans-serif;
+    color: burlywood;
+  }
+
+}

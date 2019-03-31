@@ -44,7 +44,6 @@ export class WizardComponent implements OnInit {
   }
 
   sendProbe() {
-
   }
 
   sendTroops() {

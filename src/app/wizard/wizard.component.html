@@ -18,7 +18,7 @@
 			</button>
 		</ng-template>
 		<ng-template ngSwitchCase="GAME_IN_PROGRESS">
-			<button class="sw-wizard-button" (click)="sendProbe()" i18n>
+			<button class="sw-wizard-button" routerLink="/send-probe" (click)="sendProbe()" i18n>
 				Send probe
 			</button>
 			<button class="sw-wizard-button" (click)="sendTroops()" i18n>

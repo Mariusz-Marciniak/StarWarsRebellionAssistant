@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-region-selector',
   templateUrl: './region-selector.component.html',
-  styleUrls: ['./region-selector.component.sass']
+  styleUrls: ['./region-selector.component.scss']
 })
 export class RegionSelectorComponent implements OnInit {
 
@@ -12,4 +12,7 @@ export class RegionSelectorComponent implements OnInit {
   ngOnInit() {
   }
 
+  toggleArea(areaName: string) {
+    console.error(areaName);
+  }
 }

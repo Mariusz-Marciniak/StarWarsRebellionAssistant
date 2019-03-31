@@ -1,5 +1,27 @@
 @import "app/constants";
+@import "base-styles";
+
 body {
   font-family: Impact, monospace;
   margin: $body-margin;
+}
+
+.confirmation-button {
+  @extend .menu-button;
+  background: $confirm-button-gradient-color-to;
+  background-image: -webkit-linear-gradient(top, $confirm-button-gradient-color-from, $confirm-button-gradient-color-to);
+  background-image: -moz-linear-gradient(top, $confirm-button-gradient-color-from, $confirm-button-gradient-color-to);
+  background-image: -ms-linear-gradient(top, $confirm-button-gradient-color-from, $confirm-button-gradient-color-to);
+  background-image: -o-linear-gradient(top, $confirm-button-gradient-color-from, $confirm-button-gradient-color-to);
+  background-image: linear-gradient(to bottom, $confirm-button-gradient-color-from, $confirm-button-gradient-color-to);
+}
+
+.cancel-button {
+  @extend .menu-button;
+  background: $cancel-button-gradient-color-to;
+  background-image: -webkit-linear-gradient(top, $cancel-button-gradient-color-from, $cancel-button-gradient-color-to);
+  background-image: -moz-linear-gradient(top, $cancel-button-gradient-color-from, $cancel-button-gradient-color-to);
+  background-image: -ms-linear-gradient(top, $cancel-button-gradient-color-from, $cancel-button-gradient-color-to);
+  background-image: -o-linear-gradient(top, $cancel-button-gradient-color-from, $cancel-button-gradient-color-to);
+  background-image: linear-gradient(to bottom, $cancel-button-gradient-color-from, $cancel-button-gradient-color-to);
 }

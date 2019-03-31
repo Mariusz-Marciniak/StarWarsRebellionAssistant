@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GameSetupService} from '../game-setup.service';
 import {GameStateService} from '../game-state.service';
+import {SidekickService} from '../sidekick/sidekick.service';
 
 @Component({
   selector: 'app-wizard',
@@ -9,7 +10,7 @@ import {GameStateService} from '../game-state.service';
 })
 export class WizardComponent implements OnInit {
 
-  constructor() {
+  constructor(private sidekickService: SidekickService) {
   }
 
   ngOnInit() {
@@ -44,6 +45,7 @@ export class WizardComponent implements OnInit {
   }
 
   sendProbe() {
+    this.sidekickService.open();
   }
 
   sendTroops() {

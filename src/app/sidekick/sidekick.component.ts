@@ -1,5 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {SidekickState} from './sidekick-types';
+import {SidekickService} from './sidekick.service';
 
 @Component({
   selector: 'app-sidekick',
@@ -7,24 +9,25 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   styleUrls: ['./sidekick.component.scss'],
   animations: [
     trigger('slide', [
-      state('opened', style({transform: 'translateX(50vw)'})),
-      state('closed', style({transform: 'translateX(100vw)'})),
+      state('opened', style({transform: 'translateX(-50vw)'})),
+      state('closed', style({transform: 'translateX(0vw)'})),
       transition('*=>*', animate('0.7s'))
     ])
   ]
 })
 export class SidekickComponent implements OnInit {
 
-  constructor() {
+  constructor(private sidekickService: SidekickService) {
   }
 
-  @Input() sidekickState: SidekickState = 'opened';
+  @Input() sidekickState: SidekickState;
 
   ngOnInit() {
+    this.sidekickService.state.subscribe(s => this.sidekickState = s);
   }
 
   hidePanel() {
-    this.sidekickState = 'closed';
+    this.sidekickService.close();
   }
 
   cancelOperation() {
@@ -32,4 +35,3 @@ export class SidekickComponent implements OnInit {
   }
 }
 
-type SidekickState = 'opened' | 'closed';

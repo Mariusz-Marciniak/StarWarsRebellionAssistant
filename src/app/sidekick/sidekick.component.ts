@@ -9,8 +9,8 @@ import {SidekickService} from './sidekick.service';
   styleUrls: ['./sidekick.component.scss'],
   animations: [
     trigger('slide', [
-      state('opened', style({transform: 'translateX(-50vw)'})),
-      state('closed', style({transform: 'translateX(0vw)'})),
+      state('opened', style({transform: 'translateX(-100vw)'})),
+      state('closed', style({transform: 'translateX(0px)'})),
       transition('*=>*', animate('0.7s'))
     ])
   ]

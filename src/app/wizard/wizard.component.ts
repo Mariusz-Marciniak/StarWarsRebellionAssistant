@@ -49,6 +49,7 @@ export class WizardComponent implements OnInit {
   }
 
   sendTroops() {
+    this.sidekickService.open();
   }
 
 }

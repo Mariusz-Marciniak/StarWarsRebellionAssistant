@@ -1,6 +1,6 @@
 @import "../constants";
 
-$sidekick-width: 500px;
+$sidekick-width: 100vw;
 
 .sidekick-main {
   position: fixed;
@@ -20,6 +20,8 @@ $sidekick-width: 500px;
     display: inline-block;
     font-family: sans-serif;
     color: burlywood;
+    background-color: #00000000;
+    border: none;
   }
 
 }

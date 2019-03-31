@@ -8,9 +8,11 @@ import { SelectOneComponent } from './select-one/select-one.component';
 import { SidekickComponent } from './sidekick/sidekick.component';
 import {RouterModule, Routes} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { RegionSelectorComponent } from './region-selector/region-selector.component';
 
 const appRoutes: Routes = [
-  { path: 'send-probe', component: SelectOneComponent }
+  { path: 'send-probe', component: RegionSelectorComponent },
+  { path: 'send-troops', component: RegionSelectorComponent }
 ];
 
 @NgModule({
@@ -19,7 +21,8 @@ const appRoutes: Routes = [
     SystemsComponent,
     WizardComponent,
     SelectOneComponent,
-    SidekickComponent
+    SidekickComponent,
+    RegionSelectorComponent
   ],
   imports: [
     BrowserModule,

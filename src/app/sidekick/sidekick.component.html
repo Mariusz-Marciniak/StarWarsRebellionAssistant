@@ -1,4 +1,4 @@
 <div class="sidekick-main" [@slide]="sidekickState">
-  <div class="close-button" (click)="cancelOperation();">[x]</div>
+  <button class="close-button" (click)="cancelOperation();" routerLink="/">[x]</button>
   <router-outlet></router-outlet>
 </div>

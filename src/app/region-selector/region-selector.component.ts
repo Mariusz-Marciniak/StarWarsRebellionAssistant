@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AreaComponent} from '@marciniak/map/lib/area.component';
 
 @Component({
   selector: 'app-region-selector',
@@ -7,12 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegionSelectorComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
-  toggleArea(areaName: string) {
-    console.error(areaName);
+  selectedRegion(event: MouseEvent) {
+    event.preventDefault();
+    const area = event.target as unknown as AreaComponent;
+    if (area) {
+      console.log(area);
+    }
   }
 }

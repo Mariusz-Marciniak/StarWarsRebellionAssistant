@@ -9,6 +9,7 @@ import { SidekickComponent } from './sidekick/sidekick.component';
 import {RouterModule, Routes} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RegionSelectorComponent } from './region-selector/region-selector.component';
+import {MapModule} from '@marciniak/map';
 
 const appRoutes: Routes = [
   { path: 'send-probe', component: RegionSelectorComponent },
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MapModule
   ],
   providers: [],
   bootstrap: [AppComponent]

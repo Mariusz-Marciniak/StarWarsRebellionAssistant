@@ -1,11 +1,11 @@
 export class System {
   constructor(
-    public name: string,
-    public region: string,
-    public left: string,
-    public top: string,
-    public basePoints: number,
-    public coords: string
+    public readonly name: string,
+    public readonly region: string,
+    public readonly left: string,
+    public readonly top: string,
+    public readonly basePoints: number,
+    public readonly coords: string
   ) {
   }
 }

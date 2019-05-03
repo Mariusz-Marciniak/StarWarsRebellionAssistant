@@ -2,8 +2,12 @@
   <highlight-map name="image-map" src="../../assets/map.png">
     <highlight-brush brushClass=":hover" lineWidth="4" strokeStyle="green" fillStyle="#3bff0430"></highlight-brush>
     <highlight-brush brushClass="not-available" fillStyle="#ff000050"></highlight-brush>
-    <highlight-area *ngFor="let sys of allSystems()" (click)="selectedRegion($event)" alt="{{sys.name}}" title="{{sys.name}}"
-                    coords="{{sys.coords}}">
+    <highlight-brush brushClass="selected" fillStyle="#ff000050"></highlight-brush>
+    <highlight-area *ngFor="let sys of availableSystems()" (click)="selectSystem($event)"
+                    alt="{{sys.name}}" title="{{sys.name}}" coords="{{sys.coords}}">
+    </highlight-area>
+    <highlight-area *ngFor="let sys of inactiveSystems()" brushClass="not-available" inactive="true"
+                    alt="{{sys.name}}" title="{{sys.name}}" coords="{{sys.coords}}">
     </highlight-area>
   </highlight-map>
 </div>

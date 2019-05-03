@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AreaComponent} from '@marciniak/map/lib/area.component';
 import {System} from '../systems/system';
-import {SystemsSelection} from './systems-selection';
+import {SelectableSystem, SystemsSelection} from './systems-selection';
 
 @Component({
   selector: 'app-system-selector',
@@ -14,7 +14,7 @@ export class SystemSelectorComponent {
   constructor(private systemsSelection: SystemsSelection) {
   }
 
-  availableSystems(): System[] {
+  availableSystems(): SelectableSystem[] {
     return this.systemsSelection.available;
   }
 
@@ -26,7 +26,8 @@ export class SystemSelectorComponent {
     event.preventDefault();
     const area = event.target as unknown as AreaComponent;
     if (area) {
-      console.log(area);
+      const selectedSystem = this.systemsSelection.available.find(s => s.name === area.title);
+      selectedSystem.selected = !selectedSystem.selected;
     }
   }
 

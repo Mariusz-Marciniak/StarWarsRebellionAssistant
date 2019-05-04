@@ -10,6 +10,7 @@
 
   .sw-wizard-button {
     @extend .menu-button;
+    width: 98%;
     background: $menu-button-gradient-color-from;
     background-image: -webkit-linear-gradient(top, $menu-button-gradient-color-from, $menu-button-gradient-color-to);
     background-image: -moz-linear-gradient(top, $menu-button-gradient-color-from, $menu-button-gradient-color-to);

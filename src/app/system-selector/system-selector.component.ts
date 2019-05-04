@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AreaComponent} from '@marciniak/map/lib/area.component';
 import {System} from '../systems/system';
-import {SelectableSystem, SystemsSelection} from './systems-selection';
+import {SelectableSystem, SelectionError, SystemsSelection} from './systems-selection';
 
 @Component({
   selector: 'app-system-selector',
@@ -10,6 +10,9 @@ import {SelectableSystem, SystemsSelection} from './systems-selection';
 })
 
 export class SystemSelectorComponent {
+
+  messageBoxMessage = '';
+  errorMessage = false;
 
   constructor(private systemsSelection: SystemsSelection) {
   }
@@ -26,8 +29,17 @@ export class SystemSelectorComponent {
     event.preventDefault();
     const area = event.target as unknown as AreaComponent;
     if (area) {
-      const selectedSystem = this.systemsSelection.available.find(s => s.name === area.title);
-      selectedSystem.selected = !selectedSystem.selected;
+      const err = this.systemsSelection.toggleSystem(area.title);
+      if (err === SelectionError.CANNOT_FIND_SYSTEM) {
+        this.messageBoxMessage = 'Cannot find chosen system';
+        this.errorMessage = true;
+      } else if (err === SelectionError.MAX_SELECTED_AMOUNT_REACHED) {
+        this.messageBoxMessage = 'Maximum number of systems was selected';
+        this.errorMessage = true;
+      } else {
+        this.messageBoxMessage = 'Choose systems';
+        this.errorMessage = false;
+      }
     }
   }
 

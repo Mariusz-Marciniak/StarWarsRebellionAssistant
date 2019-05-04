@@ -1,8 +1,29 @@
-.map-panel {
-  width: 100vw;
-  height: 80vh;
+.system-selector-main-panel {
   text-align: center;
-  highlight-map {
-    display: inline-block;
+
+  .map-panel {
+    width: 100vw;
+    height: 85vh;
+
+    highlight-map {
+      display: inline-block;
+    }
+  }
+
+  .footer {
+    .message-box {
+      margin-right: 10px;
+      display: inline-block;
+      text-align: right;
+      width: 500px;
+      min-width: 500px;
+      max-width: 500px;
+    }
+    .info {
+      color: #92fe75;
+    }
+    .error {
+      color: #fe5757;
+    }
   }
 }

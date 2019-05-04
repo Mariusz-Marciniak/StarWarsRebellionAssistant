@@ -49,6 +49,7 @@ export class WizardComponent {
   sendProbe() {
     this.systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameSetupService.getProbeDeck());
     this.systemsSelection.inactive = GameSetupService.getProbeHand();
+    this.systemsSelection.maxSelected = 2;
     this.router.navigate(['send-probe']);
     this.sidekickService.open();
   }

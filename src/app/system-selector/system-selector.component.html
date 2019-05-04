@@ -1,18 +1,26 @@
-<div class="map-panel">
-  <highlight-map name="image-map" src="../../assets/map.png">
-    <highlight-brush brushClass=":hover" lineWidth="4" strokeStyle="green" fillStyle="#3bff0430"></highlight-brush>
-    <highlight-brush brushClass="not-available" fillStyle="#ff000050"></highlight-brush>
-    <highlight-brush brushClass="selected" fillStyle="#0000ff50"></highlight-brush>
-    <highlight-area *ngFor="let sys of availableSystems()" (click)="selectSystem($event)"
-                    alt="{{sys.name}}" title="{{sys.name}}" coords="{{sys.coords}}"
-                    [brushClass]="sys.selected ? 'selected' : ''">
-    </highlight-area>
-    <highlight-area *ngFor="let sys of inactiveSystems()" brushClass="not-available" inactive="true"
-                    alt="{{sys.name}}" title="{{sys.name}}" coords="{{sys.coords}}">
-    </highlight-area>
-  </highlight-map>
-</div>
-<div class="footer">
-  <button class="confirmation-button">Confirm</button>
-  <button class="cancel-button">Cancel</button>
-</div>
+<span class="system-selector-main-panel">
+  <div class="map-panel">
+    <highlight-map name="image-map" src="../../assets/map.png">
+      <highlight-brush brushClass=":hover" lineWidth="4" strokeStyle="green" fillStyle="#3bff0430"></highlight-brush>
+      <highlight-brush brushClass="not-available" fillStyle="#ff000050"></highlight-brush>
+      <highlight-brush brushClass="selected" fillStyle="#0000ff50"></highlight-brush>
+      <highlight-area *ngFor="let sys of availableSystems()" (click)="selectSystem($event)"
+                      alt="{{sys.name}}" title="{{sys.name}}" coords="{{sys.coords}}"
+                      [brushClass]="sys.selected ? 'selected' : ''">
+      </highlight-area>
+      <highlight-area *ngFor="let sys of inactiveSystems()" brushClass="not-available" inactive="true"
+                      alt="{{sys.name}}" title="{{sys.name}}" coords="{{sys.coords}}">
+      </highlight-area>
+    </highlight-map>
+  </div>
+  <div class="footer">
+    <div [innerHTML]="messageBoxMessage"
+         [ngClass]="{
+          'message-box': true,
+          'error': errorMessage,
+          'info': !errorMessage
+          }"></div>
+    <button class="confirmation-button">Confirm</button>
+    <button class="cancel-button">Cancel</button>
+  </div>
+</span>

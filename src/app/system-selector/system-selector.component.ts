@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {AreaComponent} from '@marciniak/map/lib/area.component';
 import {System} from '../systems/system';
 import {SelectableSystem, SelectionError, SystemsSelection} from './systems-selection';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-system-selector',
@@ -11,10 +12,12 @@ import {SelectableSystem, SelectionError, SystemsSelection} from './systems-sele
 
 export class SystemSelectorComponent {
 
+  private readonly systemsSelection: SystemsSelection;
   messageBoxMessage = '';
   errorMessage = false;
 
-  constructor(private systemsSelection: SystemsSelection) {
+  constructor(private router: Router) {
+    this.systemsSelection = router.getCurrentNavigation().extras.state.systemsSelection;
     this.selectionMessage();
   }
 

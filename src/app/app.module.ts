@@ -10,7 +10,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MapModule} from '@marciniak/map';
 import {SystemSelectorComponent} from './system-selector/system-selector.component';
-import {SystemsSelection} from './system-selector/systems-selection';
 
 const appRoutes: Routes = [
   {path: 'send-probe', component: SystemSelectorComponent},
@@ -32,9 +31,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MapModule
   ],
-  providers: [
-    SystemsSelection
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

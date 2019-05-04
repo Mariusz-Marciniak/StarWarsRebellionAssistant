@@ -15,6 +15,20 @@ export class SystemSelectorComponent {
   errorMessage = false;
 
   constructor(private systemsSelection: SystemsSelection) {
+    this.selectionMessage();
+  }
+
+  private selectionMessage() {
+    console.log(this.systemsSelection);
+    if (this.systemsSelection.maxSelected === -1) {
+      this.messageBoxMessage = 'Choose any number systems';
+    } else if (this.systemsSelection.maxSelected === 1) {
+      this.messageBoxMessage = 'Choose one system';
+    } else if (this.systemsSelection.amountToSelect() !== 0) {
+      this.messageBoxMessage = `Choose ${this.systemsSelection.amountToSelect()} of ${this.systemsSelection.maxSelected} systems`;
+    } else {
+      this.messageBoxMessage = '';
+    }
   }
 
   availableSystems(): SelectableSystem[] {
@@ -37,7 +51,7 @@ export class SystemSelectorComponent {
         this.messageBoxMessage = 'Maximum number of systems was selected';
         this.errorMessage = true;
       } else {
-        this.messageBoxMessage = 'Choose systems';
+        this.selectionMessage();
         this.errorMessage = false;
       }
     }

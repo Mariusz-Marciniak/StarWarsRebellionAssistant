@@ -68,6 +68,10 @@ export class SystemsSelection {
   singleSelection(): boolean {
     return this.maxSelected === 1;
   }
+
+  amountToSelect(): number {
+    return this.maxSelected - this.selectedSystemsAmount;
+  }
 }
 
 export class SelectableSystem extends System {

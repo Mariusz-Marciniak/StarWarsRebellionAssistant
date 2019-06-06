@@ -45,7 +45,7 @@ export class WizardComponent {
     return GameStateService.getGameState();
   }
 
-  sendProbe() {
+  sendProbes() {
     const systemsSelection = new SystemsSelection();
     systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameSetupService.getProbeDeck());
     systemsSelection.inactive = GameSetupService.getProbeHand();

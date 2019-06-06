@@ -20,7 +20,7 @@
           'error': errorMessage,
           'info': !errorMessage
           }"></div>
-    <button class="confirmation-button">Confirm</button>
+    <button class="confirmation-button" (click)="confirmSelection()" [disabled]="requirementsUnfulfilled()">Confirm</button>
     <button class="cancel-button">Cancel</button>
   </div>
 </span>

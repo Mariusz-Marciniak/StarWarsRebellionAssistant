@@ -60,4 +60,11 @@ export class SystemSelectorComponent {
     }
   }
 
+  confirmSelection() {
+    console.log(this.systemsSelection.available.filter(v => v.selected));
+  }
+
+  requirementsUnfulfilled(): boolean {
+    return !this.systemsSelection.unlimitedSelection() && this.systemsSelection.amountToSelect() !== 0;
+  }
 }

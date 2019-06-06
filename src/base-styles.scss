@@ -10,4 +10,12 @@
   display: block;
   margin-bottom: 3px;
   cursor: pointer;
+  &:disabled {
+    background: $disabled-button-gradient-color-to;
+    background-image: -webkit-linear-gradient(top, $disabled-button-gradient-color-from, $disabled-button-gradient-color-to);
+    background-image: -moz-linear-gradient(top, $disabled-button-gradient-color-from, $disabled-button-gradient-color-to);
+    background-image: -ms-linear-gradient(top, $disabled-button-gradient-color-from, $disabled-button-gradient-color-to);
+    background-image: -o-linear-gradient(top, $disabled-button-gradient-color-from, $disabled-button-gradient-color-to);
+    background-image: linear-gradient(to bottom, $disabled-button-gradient-color-from, $disabled-button-gradient-color-to);
+  }
 }

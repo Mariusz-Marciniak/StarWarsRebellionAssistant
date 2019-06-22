@@ -2,13 +2,13 @@ import {Injectable} from '@angular/core';
 import {GameSetupService} from '../game-setup.service';
 import {SidekickService} from '../sidekick/sidekick.service';
 import {NavigationExtras, Router} from '@angular/router';
-import {SystemsSelection} from '../system-selector/systems-selection';
+import {SelectableSystem, SystemsSelection} from '../system-selector/systems-selection';
 import {SystemSelectorService} from '../system-selector/system-selector.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SendProbesService {
+export class SendTroopsService {
 
 
   constructor(
@@ -17,14 +17,15 @@ export class SendProbesService {
     private router: Router) {
   }
 
-  sendProbes() {
+  sendTroops() {
     const systemsSelection = new SystemsSelection();
     systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameSetupService.getProbeDeck());
-    systemsSelection.inactive = GameSetupService.getProbeHand();
-    systemsSelection.maxSelected = 2;
-    this.systemSelectorService.resultPromise.subscribe(
-      (response) => {
-        console.log(response);
+    systemsSelection.inactive = SystemsSelection.concatUniqueSystems(GameSetupService.getProbeHand(), GameSetupService.getOccupied());
+    this.systemSelectorService.resultWatch$.subscribe(
+      (response: SelectableSystem[]) => {
+        response.forEach(selectedSystem => {
+          GameSetupService.occupySystem(selectedSystem.name);
+        });
       },
       (err) => {
         console.error('Error: ' + err);
@@ -39,7 +40,7 @@ export class SendProbesService {
         systemsSelection
       }
     };
-    this.router.navigate(['send-probe'], extras);
+    this.router.navigate(['send-troops'], extras);
     this.sidekickService.open();
 
   }

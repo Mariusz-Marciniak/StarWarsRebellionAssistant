@@ -4,6 +4,10 @@ import {System} from '../systems/system';
 @Injectable()
 export class SystemsSelection {
 
+
+  public constructor() {
+  }
+
   public available: SelectableSystem[];
   public inactive: System[];
 
@@ -18,12 +22,19 @@ export class SystemsSelection {
 
   private selectedSystemsAmount = 0;
 
-
-  public constructor() {
-  }
-
   static convertToSelectableSystems(systems: System[]): SelectableSystem[] {
     return systems.map(s => new SelectableSystem(s));
+  }
+
+  static concatUniqueSystems(arrayOrg: System[], arrayAdd: System[]): System[] {
+    const result = arrayOrg.slice();
+    const orgNames = new Set(arrayOrg.map(system => system.name));
+    for (const system of arrayAdd) {
+      if (!orgNames.has(system.name)) {
+        result.push(system);
+      }
+    }
+    return result;
   }
 
   /**

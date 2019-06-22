@@ -23,7 +23,6 @@ export class SystemSelectorComponent {
   }
 
   private selectionMessage() {
-    console.log(this.systemsSelection);
     if (this.systemsSelection.maxSelected === -1) {
       this.messageBoxMessage = 'Choose any number systems';
     } else if (this.systemsSelection.maxSelected === 1) {
@@ -63,12 +62,16 @@ export class SystemSelectorComponent {
     }
   }
 
+  requirementsUnfulfilled(): boolean {
+    return !this.systemsSelection.unlimitedSelection() && this.systemsSelection.amountToSelect() !== 0;
+  }
+
   confirmSelection() {
     this.systemSelectorService.subscriber.next(this.systemsSelection.available.filter(v => v.selected));
     this.systemSelectorService.subscriber.complete();
   }
 
-  requirementsUnfulfilled(): boolean {
-    return !this.systemsSelection.unlimitedSelection() && this.systemsSelection.amountToSelect() !== 0;
+  cancelOperation() {
+    this.systemSelectorService.subscriber.complete();
   }
 }

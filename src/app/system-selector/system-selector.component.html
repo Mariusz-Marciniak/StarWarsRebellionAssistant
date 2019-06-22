@@ -21,6 +21,6 @@
           'info': !errorMessage
           }"></div>
     <button class="confirmation-button" (click)="confirmSelection()" [disabled]="requirementsUnfulfilled()">Confirm</button>
-    <button class="cancel-button">Cancel</button>
+    <button class="cancel-button" (click)="cancelOperation()">Cancel</button>
   </div>
 </span>

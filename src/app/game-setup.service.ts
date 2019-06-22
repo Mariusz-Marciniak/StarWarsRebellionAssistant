@@ -56,7 +56,7 @@ export class GameSetupService {
   static newGame() {
     GameSetupService.saveProbeDeck(SYSTEMS.slice());
     GameSetupService.saveProbeHand([]);
-    GameSetupService.saveProbeHand([]);
+    GameSetupService.saveOccupied([]);
     GameStateService.newGameStarted();
   }
 
@@ -64,15 +64,23 @@ export class GameSetupService {
     return JSON.parse(sessionStorage.getItem('sw-probeDeck'));
   }
 
-  static saveProbeDeck(deck: System[]) {
+  private static saveProbeDeck(deck: System[]) {
     sessionStorage.setItem('sw-probeDeck', JSON.stringify(deck));
   }
 
-  static getRebelBase(): System {
+  static getOccupied() {
+    return JSON.parse(sessionStorage.getItem('sw-occupied'));
+  }
+
+  private static saveOccupied(occupiedSystems: System[]) {
+    sessionStorage.setItem('sw-occupied', JSON.stringify(occupiedSystems));
+  }
+
+  private static getRebelBase(): System {
     return JSON.parse(sessionStorage.getItem('sw-rebelBase'));
   }
 
-  static saveRebelBase(system: System) {
+  private static saveRebelBase(system: System) {
     sessionStorage.setItem('sw-rebelBase', JSON.stringify(system));
   }
 
@@ -99,4 +107,18 @@ export class GameSetupService {
     GameSetupService.saveProbeHand(probeHand);
     GameSetupService.saveProbeDeck(probeDeck);
   }
+
+  static occupySystem(name: string) {
+    let system;
+    const probeDeck = GameSetupService.getProbeDeck();
+    const occupiedSystems = GameSetupService.getOccupied();
+    for (system of probeDeck) {
+      if (system.name === name) {
+        occupiedSystems.push(system);
+        break;
+      }
+    }
+    GameSetupService.saveOccupied(occupiedSystems);
+  }
+
 }

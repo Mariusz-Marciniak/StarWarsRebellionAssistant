@@ -8,7 +8,7 @@ export class SystemSelectorService {
 
   subscriber: any;
 
-  resultPromise = new Observable(subscriber => {
+  resultWatch$ = new Observable(subscriber => {
     this.subscriber = subscriber;
     return {
       unsubscribe(): void {

@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {GameSetupService} from '../game-setup.service';
 import {GameStateService} from '../game-state.service';
-import {SendProbesService} from '../operation/send-probes.service';
+import {SendProbesService} from '../actions/send-probes.service';
+import {SendTroopsService} from '../actions/send-troops.service';
 
 @Component({
   selector: 'app-wizard',
@@ -10,7 +11,8 @@ import {SendProbesService} from '../operation/send-probes.service';
 })
 export class WizardComponent {
 
-  constructor(private sendProbesService: SendProbesService) {
+  constructor(private sendProbesService: SendProbesService,
+              private sendTroopsService: SendTroopsService) {
   }
 
   newGame() {
@@ -46,6 +48,7 @@ export class WizardComponent {
   }
 
   sendTroops() {
+    this.sendTroopsService.sendTroops();
   }
 
 }

@@ -19,6 +19,10 @@ export class SystemsComponent implements OnInit {
     return GameSetupService.getProbeHand();
   }
 
+  occupied(): System[] {
+    return GameSetupService.getOccupied();
+  }
+
   positionStyle(system: System) {
     return {
       left: system.left,

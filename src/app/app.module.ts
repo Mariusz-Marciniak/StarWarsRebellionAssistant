@@ -13,7 +13,8 @@ import {SystemSelectorComponent} from './system-selector/system-selector.compone
 
 const appRoutes: Routes = [
   {path: 'send-probe', component: SystemSelectorComponent},
-  {path: 'send-troops', component: SystemSelectorComponent}
+  {path: 'send-troops', component: SystemSelectorComponent},
+  {path: 'remove-troops', component: SystemSelectorComponent}
 ];
 
 @NgModule({

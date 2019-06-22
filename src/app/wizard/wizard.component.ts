@@ -51,4 +51,7 @@ export class WizardComponent {
     this.sendTroopsService.sendTroops();
   }
 
+  freeSystems() {
+    this.sendTroopsService.removeTroops();
+  }
 }

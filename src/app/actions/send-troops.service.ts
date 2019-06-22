@@ -42,7 +42,32 @@ export class SendTroopsService {
     };
     this.router.navigate(['send-troops'], extras);
     this.sidekickService.open();
-
   }
 
+  removeTroops() {
+    const systemsSelection = new SystemsSelection();
+    systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameSetupService.getOccupiedSystems());
+    systemsSelection.inactive = GameSetupService.getFreeSystems();
+    this.systemSelectorService.resultWatch$.subscribe(
+      (response: SelectableSystem[]) => {
+        response.forEach(selectedSystem => {
+          GameSetupService.freeSystem(selectedSystem.name);
+        });
+      },
+      (err) => {
+        console.error('Error: ' + err);
+      },
+      () => {
+        this.sidekickService.close();
+        this.router.navigateByUrl('/');
+      }
+    );
+    const extras: NavigationExtras = {
+      state: {
+        systemsSelection
+      }
+    };
+    this.router.navigate(['remove-troops'], extras);
+    this.sidekickService.open();
+  }
 }

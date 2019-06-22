@@ -125,4 +125,15 @@ export class GameSetupService {
     GameSetupService.saveOccupiedSystems(occupiedSystems);
   }
 
+  static freeSystem(name: string) {
+    const occupiedSystems = GameSetupService.getOccupiedSystems();
+    for (let i = 0; i < occupiedSystems.length; i++) {
+      if (occupiedSystems[i].name === name) {
+        occupiedSystems.splice(i, 1);
+        break;
+      }
+    }
+    GameSetupService.saveOccupiedSystems(occupiedSystems);
+  }
+
 }

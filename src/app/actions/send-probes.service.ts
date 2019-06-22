@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {GameSetupService} from '../game-setup.service';
+import {GameSetupService} from '../game-controllers/game-setup.service';
 import {SidekickService} from '../sidekick/sidekick.service';
 import {NavigationExtras, Router} from '@angular/router';
 import {SelectableSystem, SystemsSelection} from '../system-selector/systems-selection';

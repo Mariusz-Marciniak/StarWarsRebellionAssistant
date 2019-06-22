@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {System, SYSTEMS} from './systems/system';
+import {System, SYSTEMS} from '../systems/system';
 import {GameStateService} from './game-state.service';
 
 @Injectable({

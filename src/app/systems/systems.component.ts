@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {GameSetupService} from '../game-setup.service';
+import {GameSetupService} from '../game-controllers/game-setup.service';
 import {System} from './system';
 
 @Component({

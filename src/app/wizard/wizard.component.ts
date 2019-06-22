@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {GameSetupService} from '../game-setup.service';
-import {GameStateService} from '../game-state.service';
+import {GameSetupService} from '../game-controllers/game-setup.service';
+import {GameStateService} from '../game-controllers/game-state.service';
 import {SendProbesService} from '../actions/send-probes.service';
 import {SendTroopsService} from '../actions/send-troops.service';
 

@@ -81,7 +81,7 @@ export class GameSetupService {
     return SYSTEMS.slice().filter(system => !occupiedNames.has(system.name));
   }
 
-  private static getRebelBase(): System {
+  static getRebelBase(): System {
     return JSON.parse(sessionStorage.getItem('sw-rebelBase'));
   }
 

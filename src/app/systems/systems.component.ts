@@ -9,6 +9,9 @@ import {System} from './system';
 })
 
 export class SystemsComponent implements OnInit {
+
+  foundedRebelBase: System;
+
   constructor() {
   }
 
@@ -21,6 +24,19 @@ export class SystemsComponent implements OnInit {
 
   occupied(): System[] {
     return GameSetupService.getOccupiedSystems();
+  }
+
+  rebelBase(): System[] {
+    if (this.foundedRebelBase) {
+      return [this.foundedRebelBase];
+    } else {
+      if (GameSetupService.checkIfRebelBaseFound()) {
+        this.foundedRebelBase = GameSetupService.getRebelBase();
+        return [this.foundedRebelBase];
+      } else {
+        return [];
+      }
+    }
   }
 
   positionStyle(system: System) {

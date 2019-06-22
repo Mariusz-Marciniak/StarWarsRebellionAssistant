@@ -18,6 +18,11 @@ export class GameUtilsService {
       .map(system => system.name).find(systemName => systemName === rebelBaseName);
   }
 
+  static startingImperialSystem(name: string) {
+    GameUtilsService.drawProbeCard(name);
+    GameUtilsService.subjugateSystem(name);
+  }
+
   static drawProbeCard(name: string) {
     let system;
     const probeDeck = StorageService.getProbeDeck();

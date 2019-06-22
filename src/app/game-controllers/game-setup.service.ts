@@ -21,19 +21,19 @@ export class GameSetupService {
   }
 
   static standardSetup() {
-    GameUtilsService.drawProbeCard('Coruscant');
-    GameUtilsService.drawProbeCard('Mandalore');
-    GameUtilsService.drawProbeCard('Saleucami');
-    GameUtilsService.drawProbeCard('Corellia');
-    GameUtilsService.drawProbeCard('Sullust');
-    GameUtilsService.drawProbeCard('Mustafar');
+    GameUtilsService.startingImperialSystem('Coruscant');
+    GameUtilsService.startingImperialSystem('Mandalore');
+    GameUtilsService.startingImperialSystem('Saleucami');
+    GameUtilsService.startingImperialSystem('Corellia');
+    GameUtilsService.startingImperialSystem('Sullust');
+    GameUtilsService.startingImperialSystem('Mustafar');
   }
 
   static advancedSetup() {
-    GameUtilsService.drawProbeCard('Coruscant');
+    GameUtilsService.startingImperialSystem('Coruscant');
     const systems = GameSetupService.imperialSystems.slice();
     for (let i = 0; i < 5; i++) {
-      GameUtilsService.drawProbeCard(GameSetupService.removeRandomFrom(systems));
+      GameUtilsService.startingImperialSystem(GameSetupService.removeRandomFrom(systems));
     }
   }
 

@@ -1,9 +1,7 @@
 import {Component} from '@angular/core';
 import {GameSetupService} from '../game-setup.service';
 import {GameStateService} from '../game-state.service';
-import {SidekickService} from '../sidekick/sidekick.service';
-import {NavigationExtras, Router} from '@angular/router';
-import {SystemsSelection} from '../system-selector/systems-selection';
+import {SendProbesService} from '../operation/send-probes.service';
 
 @Component({
   selector: 'app-wizard',
@@ -12,9 +10,7 @@ import {SystemsSelection} from '../system-selector/systems-selection';
 })
 export class WizardComponent {
 
-  constructor(
-    private sidekickService: SidekickService,
-    private router: Router) {
+  constructor(private sendProbesService: SendProbesService) {
   }
 
   newGame() {
@@ -46,22 +42,10 @@ export class WizardComponent {
   }
 
   sendProbes() {
-    const systemsSelection = new SystemsSelection();
-    systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameSetupService.getProbeDeck());
-    systemsSelection.inactive = GameSetupService.getProbeHand();
-    systemsSelection.maxSelected = 2;
-    const extras: NavigationExtras = {
-      state: {
-        systemsSelection
-      }
-    };
-    this.router.navigate(['send-probe'], extras);
-    this.sidekickService.open();
+    this.sendProbesService.sendProbes();
   }
 
   sendTroops() {
-    this.router.navigate(['send-troops']);
-    this.sidekickService.open();
   }
 
 }

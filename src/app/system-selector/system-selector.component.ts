@@ -3,6 +3,7 @@ import {AreaComponent} from '@marciniak/map/lib/area.component';
 import {System} from '../systems/system';
 import {SelectableSystem, SelectionError, SystemsSelection} from './systems-selection';
 import {Router} from '@angular/router';
+import {SystemSelectorService} from './system-selector.service';
 
 @Component({
   selector: 'app-system-selector',
@@ -16,7 +17,7 @@ export class SystemSelectorComponent {
   messageBoxMessage = '';
   errorMessage = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private systemSelectorService: SystemSelectorService) {
     this.systemsSelection = router.getCurrentNavigation().extras.state.systemsSelection;
     this.selectionMessage();
   }
@@ -57,11 +58,14 @@ export class SystemSelectorComponent {
         this.selectionMessage();
         this.errorMessage = false;
       }
+    } else {
+      console.error('Coulnd\'t find requested area');
     }
   }
 
   confirmSelection() {
-    console.log(this.systemsSelection.available.filter(v => v.selected));
+    this.systemSelectorService.subscriber.next(this.systemsSelection.available.filter(v => v.selected));
+    this.systemSelectorService.subscriber.complete();
   }
 
   requirementsUnfulfilled(): boolean {

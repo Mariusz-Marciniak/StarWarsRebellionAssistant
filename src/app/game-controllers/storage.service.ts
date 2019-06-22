@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {System, SYSTEMS} from '../systems/system';
-import {GameStateService} from './game-state.service';
+import {System} from '../systems/system';
 
 @Injectable({
   providedIn: 'root'

@@ -25,7 +25,7 @@ export class SendTroopsService {
     this.systemSelectorService.resultWatch$.subscribe(
       (response: SelectableSystem[]) => {
         response.forEach(selectedSystem => {
-          GameUtilsService.occupySystem(selectedSystem.name);
+          GameUtilsService.subjugateSystem(selectedSystem.name);
         });
       },
       (err) => {

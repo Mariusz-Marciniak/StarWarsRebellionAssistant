@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {System, SYSTEMS} from '../systems/system';
-import {GameStateService} from './game-state.service';
 import {StorageService} from './storage.service';
 
 @Injectable({
@@ -35,7 +34,7 @@ export class GameUtilsService {
     StorageService.saveProbeDeck(probeDeck);
   }
 
-  static occupySystem(name: string) {
+  static subjugateSystem(name: string) {
     let system;
     const subjugatedSystems = StorageService.getSubjugatedSystems();
     for (system of SYSTEMS) {

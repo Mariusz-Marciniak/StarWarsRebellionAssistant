@@ -19,8 +19,8 @@ export class SendTroopsService {
 
   sendTroops() {
     const systemsSelection = new SystemsSelection();
-    systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameSetupService.getProbeDeck());
-    systemsSelection.inactive = SystemsSelection.concatUniqueSystems(GameSetupService.getProbeHand(), GameSetupService.getOccupied());
+    systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameSetupService.getFreeSystems());
+    systemsSelection.inactive = GameSetupService.getOccupiedSystems();
     this.systemSelectorService.resultWatch$.subscribe(
       (response: SelectableSystem[]) => {
         response.forEach(selectedSystem => {

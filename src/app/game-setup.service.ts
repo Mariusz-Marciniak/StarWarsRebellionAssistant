@@ -35,7 +35,7 @@ export class GameSetupService {
     }
   }
 
-  static removeRandomFrom(collection) {
+  private static removeRandomFrom(collection) {
     const index = Math.floor(Math.random() * 1000) % collection.length;
     const result = collection[index];
     collection.splice(index, 1);
@@ -56,7 +56,7 @@ export class GameSetupService {
   static newGame() {
     GameSetupService.saveProbeDeck(SYSTEMS.slice());
     GameSetupService.saveProbeHand([]);
-    GameSetupService.saveOccupied([]);
+    GameSetupService.saveOccupiedSystems([]);
     GameStateService.newGameStarted();
   }
 
@@ -68,12 +68,17 @@ export class GameSetupService {
     sessionStorage.setItem('sw-probeDeck', JSON.stringify(deck));
   }
 
-  static getOccupied() {
+  static getOccupiedSystems(): System[] {
     return JSON.parse(sessionStorage.getItem('sw-occupied'));
   }
 
-  private static saveOccupied(occupiedSystems: System[]) {
+  private static saveOccupiedSystems(occupiedSystems: System[]) {
     sessionStorage.setItem('sw-occupied', JSON.stringify(occupiedSystems));
+  }
+
+  static getFreeSystems() {
+    const occupiedNames = new Set(this.getOccupiedSystems().map(system => system.name));
+    return SYSTEMS.slice().filter(system => !occupiedNames.has(system.name));
   }
 
   private static getRebelBase(): System {
@@ -110,15 +115,14 @@ export class GameSetupService {
 
   static occupySystem(name: string) {
     let system;
-    const probeDeck = GameSetupService.getProbeDeck();
-    const occupiedSystems = GameSetupService.getOccupied();
-    for (system of probeDeck) {
+    const occupiedSystems = GameSetupService.getOccupiedSystems();
+    for (system of SYSTEMS) {
       if (system.name === name) {
         occupiedSystems.push(system);
         break;
       }
     }
-    GameSetupService.saveOccupied(occupiedSystems);
+    GameSetupService.saveOccupiedSystems(occupiedSystems);
   }
 
 }

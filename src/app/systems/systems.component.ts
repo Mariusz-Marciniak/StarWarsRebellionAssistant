@@ -20,7 +20,7 @@ export class SystemsComponent implements OnInit {
   }
 
   occupied(): System[] {
-    return GameSetupService.getOccupied();
+    return GameSetupService.getOccupiedSystems();
   }
 
   positionStyle(system: System) {

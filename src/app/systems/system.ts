@@ -8,6 +8,18 @@ export class System {
     public readonly coords: string
   ) {
   }
+
+  static concatUniqueSystems(arrayOrg: System[], arrayAdd: System[]): System[] {
+    const result = arrayOrg.slice();
+    const orgNames = new Set(arrayOrg.map(system => system.name));
+    for (const system of arrayAdd) {
+      if (!orgNames.has(system.name)) {
+        result.push(system);
+      }
+    }
+    return result;
+  }
+
 }
 
 export const SYSTEMS: System[] = [

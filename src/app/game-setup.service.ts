@@ -97,6 +97,12 @@ export class GameSetupService {
     sessionStorage.setItem('sw-probeHand', JSON.stringify(hand));
   }
 
+  static checkIfRebelBaseFound(): string {
+    const rebelBaseName = this.getRebelBase().name;
+    return System.concatUniqueSystems(GameSetupService.getOccupiedSystems(), GameSetupService.getProbeHand())
+      .map(system => system.name ).find(systemName => systemName === rebelBaseName);
+  }
+
   static drawProbeCard(name: string) {
     let system;
     const probeDeck = GameSetupService.getProbeDeck();

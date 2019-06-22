@@ -22,8 +22,8 @@ export class SystemsComponent implements OnInit {
     return GameSetupService.getProbeHand();
   }
 
-  occupied(): System[] {
-    return GameSetupService.getOccupiedSystems();
+  subjugated(): System[] {
+    return GameSetupService.getSubjugatedSystems();
   }
 
   rebelBase(): System[] {
@@ -31,6 +31,7 @@ export class SystemsComponent implements OnInit {
       return [this.foundedRebelBase];
     } else {
       if (GameSetupService.checkIfRebelBaseFound()) {
+
         this.foundedRebelBase = GameSetupService.getRebelBase();
         return [this.foundedRebelBase];
       } else {

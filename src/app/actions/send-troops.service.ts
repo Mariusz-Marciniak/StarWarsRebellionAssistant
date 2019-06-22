@@ -20,7 +20,7 @@ export class SendTroopsService {
   sendTroops() {
     const systemsSelection = new SystemsSelection();
     systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameSetupService.getFreeSystems());
-    systemsSelection.inactive = GameSetupService.getOccupiedSystems();
+    systemsSelection.inactive = GameSetupService.getSubjugatedSystems();
     this.systemSelectorService.resultWatch$.subscribe(
       (response: SelectableSystem[]) => {
         response.forEach(selectedSystem => {
@@ -50,7 +50,7 @@ export class SendTroopsService {
 
   removeTroops() {
     const systemsSelection = new SystemsSelection();
-    systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameSetupService.getOccupiedSystems());
+    systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameSetupService.getSubjugatedSystems());
     systemsSelection.inactive = GameSetupService.getFreeSystems();
     this.systemSelectorService.resultWatch$.subscribe(
       (response: SelectableSystem[]) => {

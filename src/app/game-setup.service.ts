@@ -56,7 +56,7 @@ export class GameSetupService {
   static newGame() {
     GameSetupService.saveProbeDeck(SYSTEMS.slice());
     GameSetupService.saveProbeHand([]);
-    GameSetupService.saveOccupiedSystems([]);
+    GameSetupService.saveSubjugatedSystems([]);
     GameStateService.newGameStarted();
   }
 
@@ -68,17 +68,17 @@ export class GameSetupService {
     sessionStorage.setItem('sw-probeDeck', JSON.stringify(deck));
   }
 
-  static getOccupiedSystems(): System[] {
-    return JSON.parse(sessionStorage.getItem('sw-occupied'));
+  static getSubjugatedSystems(): System[] {
+    return JSON.parse(sessionStorage.getItem('sw-subjugated'));
   }
 
-  private static saveOccupiedSystems(occupiedSystems: System[]) {
-    sessionStorage.setItem('sw-occupied', JSON.stringify(occupiedSystems));
+  private static saveSubjugatedSystems(subjugatedSystems: System[]) {
+    sessionStorage.setItem('sw-subjugated', JSON.stringify(subjugatedSystems));
   }
 
   static getFreeSystems() {
-    const occupiedNames = new Set(this.getOccupiedSystems().map(system => system.name));
-    return SYSTEMS.slice().filter(system => !occupiedNames.has(system.name));
+    const subjugatedNames = new Set(this.getSubjugatedSystems().map(system => system.name));
+    return SYSTEMS.slice().filter(system => !subjugatedNames.has(system.name));
   }
 
   static getRebelBase(): System {
@@ -99,7 +99,7 @@ export class GameSetupService {
 
   static checkIfRebelBaseFound(): string {
     const rebelBaseName = this.getRebelBase().name;
-    return System.concatUniqueSystems(GameSetupService.getOccupiedSystems(), GameSetupService.getProbeHand())
+    return System.concatUniqueSystems(GameSetupService.getSubjugatedSystems(), GameSetupService.getProbeHand())
       .map(system => system.name ).find(systemName => systemName === rebelBaseName);
   }
 
@@ -121,25 +121,25 @@ export class GameSetupService {
 
   static occupySystem(name: string) {
     let system;
-    const occupiedSystems = GameSetupService.getOccupiedSystems();
+    const subjugatedSystems = GameSetupService.getSubjugatedSystems();
     for (system of SYSTEMS) {
       if (system.name === name) {
-        occupiedSystems.push(system);
+        subjugatedSystems.push(system);
         break;
       }
     }
-    GameSetupService.saveOccupiedSystems(occupiedSystems);
+    GameSetupService.saveSubjugatedSystems(subjugatedSystems);
   }
 
   static freeSystem(name: string) {
-    const occupiedSystems = GameSetupService.getOccupiedSystems();
-    for (let i = 0; i < occupiedSystems.length; i++) {
-      if (occupiedSystems[i].name === name) {
-        occupiedSystems.splice(i, 1);
+    const subjugatedSystems = GameSetupService.getSubjugatedSystems();
+    for (let i = 0; i < subjugatedSystems.length; i++) {
+      if (subjugatedSystems[i].name === name) {
+        subjugatedSystems.splice(i, 1);
         break;
       }
     }
-    GameSetupService.saveOccupiedSystems(occupiedSystems);
+    GameSetupService.saveSubjugatedSystems(subjugatedSystems);
   }
 
 }

@@ -1,12 +1,22 @@
 <div class="sw-map-panel">
-	<div class="sw-map-inner-panel">
-		<img class="sw-map" src="../../assets/map.png" />
-    <img *ngFor="let system of probeHand()" class="sw-mark-on-map" alt = "{{system.name}}" [ngStyle]="positionStyle(system)" src ="../../assets/imperial.png" />
-    <img *ngFor="let system of occupied()" class="sw-mark-on-map" alt = "{{system.name}}" [ngStyle]="positionStyle(system)" src ="../../assets/trooper.png" />
-    <img *ngFor="let system of rebelBase()" class="sw-mark-on-map" alt = "{{system.name}}" [ngStyle]="positionStyle(system)" src ="../../assets/rebel.png" />
-	</div>
-	<div class="sw-map-legend">
-		<img class="sw-map-mark" src="../../assets/imperial.png" />
-		<div class="sw-map-legend-desc" i18n> - system checked by Imperium</div>
-	</div>
+  <div class="sw-map-inner-panel">
+    <img class="sw-map" src="../../assets/map.png"/>
+    <img *ngFor="let system of probeHand()" class="sw-mark-on-map" alt="{{system.name}}" [ngStyle]="positionStyle(system)" src="../../assets/imperial.png"/>
+    <img *ngFor="let system of subjugated()" class="sw-mark-on-map" alt="{{system.name}}" [ngStyle]="positionStyle(system)" src="../../assets/trooper.png"/>
+    <img *ngFor="let system of rebelBase()" class="sw-mark-on-map" alt="{{system.name}}" [ngStyle]="positionStyle(system)" src="../../assets/rebel.png"/>
+  </div>
+  <div class="sw-map-legend">
+    <div>
+      <img class="sw-map-mark" src="../../assets/imperial.png" />
+      <div class="sw-map-legend-desc" i18n> - system checked by Imperium</div>
+    </div>
+    <div>
+      <img class="sw-map-mark" src="../../assets/trooper.png" />
+      <div class="sw-map-legend-desc" i18n> - system subjugated by Imperium</div>
+    </div>
+    <div *ngIf="foundedRebelBase">
+      <img class="sw-map-mark" src="../../assets/rebel.png" />
+      <div class="sw-map-legend-desc" i18n> - Rebel Base at {{foundedRebelBase.name}}</div>
+    </div>
+  </div>
 </div>

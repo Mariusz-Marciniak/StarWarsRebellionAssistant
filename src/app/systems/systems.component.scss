@@ -1,7 +1,6 @@
 @import "../constants";
 
 .sw-map-panel {
-	background-color: $panel-background-color;
 	padding-bottom: 10px;
 
   .sw-map-inner-panel {
@@ -17,16 +16,17 @@
     }
   }
   .sw-map-legend {
-    float: left;
     margin-top: 20px;
     margin-left: 20px;
 
     .sw-map-mark {
+      vertical-align: text-bottom;
+      display: inline-block;
       width: 15px;
       height: 15px;
     }
     .sw-map-legend-desc {
-      float: right;
+      display: inline-block;
       margin-left: 8px;
       font-family: monospace;
       color: #351035;

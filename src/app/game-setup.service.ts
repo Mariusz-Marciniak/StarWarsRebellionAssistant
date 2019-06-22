@@ -57,6 +57,7 @@ export class GameSetupService {
     GameSetupService.saveProbeDeck(SYSTEMS.slice());
     GameSetupService.saveProbeHand([]);
     GameSetupService.saveSubjugatedSystems([]);
+    GameSetupService.resetFoundRebelBase();
     GameStateService.newGameStarted();
   }
 
@@ -89,6 +90,18 @@ export class GameSetupService {
     sessionStorage.setItem('sw-rebelBase', JSON.stringify(system));
   }
 
+  private static getFoundRebelBase(): System {
+    return JSON.parse(sessionStorage.getItem('sw-foundRebelBase'));
+  }
+
+  private static resetFoundRebelBase() {
+    sessionStorage.removeItem('sw-foundRebelBase');
+  }
+
+  private static saveFoundRebelBase(system: System) {
+    sessionStorage.setItem('sw-foundRebelBase', JSON.stringify(system));
+  }
+
   static getProbeHand(): System[] {
     return JSON.parse(sessionStorage.getItem('sw-probeHand'));
   }
@@ -100,7 +113,7 @@ export class GameSetupService {
   static checkIfRebelBaseFound(): string {
     const rebelBaseName = this.getRebelBase().name;
     return System.concatUniqueSystems(GameSetupService.getSubjugatedSystems(), GameSetupService.getProbeHand())
-      .map(system => system.name ).find(systemName => systemName === rebelBaseName);
+      .map(system => system.name).find(systemName => systemName === rebelBaseName);
   }
 
   static drawProbeCard(name: string) {
@@ -142,4 +155,13 @@ export class GameSetupService {
     GameSetupService.saveSubjugatedSystems(subjugatedSystems);
   }
 
+  static foundRebelBase(): System {
+    if (!this.getFoundRebelBase()) {
+      if (GameSetupService.checkIfRebelBaseFound()) {
+        this.saveFoundRebelBase(GameSetupService.getRebelBase());
+        return GameSetupService.getRebelBase();
+      }
+    }
+    return this.getFoundRebelBase();
+  }
 }

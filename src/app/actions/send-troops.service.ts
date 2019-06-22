@@ -31,10 +31,6 @@ export class SendTroopsService {
         console.error('Error: ' + err);
       },
       () => {
-        const rebelBase = GameSetupService.checkIfRebelBaseFound();
-        if (rebelBase !== undefined) {
-          console.log(`Rebel base found on ${rebelBase}`);
-        }
         this.sidekickService.close();
         this.router.navigateByUrl('/');
       }

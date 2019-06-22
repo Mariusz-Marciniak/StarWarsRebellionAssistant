@@ -10,7 +10,6 @@ import {SystemSelectorService} from '../system-selector/system-selector.service'
 })
 export class SendProbesService {
 
-
   constructor(
     private sidekickService: SidekickService,
     private systemSelectorService: SystemSelectorService,
@@ -32,10 +31,6 @@ export class SendProbesService {
         console.error('Error: ' + err);
       },
       () => {
-        const rebelBase = GameSetupService.checkIfRebelBaseFound();
-        if (rebelBase !== undefined) {
-          console.log(`Rebel base found on ${rebelBase}`);
-        }
         this.sidekickService.close();
         this.router.navigateByUrl('/');
       }

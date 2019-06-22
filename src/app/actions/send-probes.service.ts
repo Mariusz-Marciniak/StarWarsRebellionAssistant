@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {GameSetupService} from '../game-controllers/game-setup.service';
 import {SidekickService} from '../sidekick/sidekick.service';
 import {NavigationExtras, Router} from '@angular/router';
 import {SelectableSystem, SystemsSelection} from '../system-selector/systems-selection';
 import {SystemSelectorService} from '../system-selector/system-selector.service';
+import {StorageService} from '../game-controllers/storage.service';
+import {GameUtilsService} from '../game-controllers/game-utils.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +19,13 @@ export class SendProbesService {
 
   sendProbes() {
     const systemsSelection = new SystemsSelection();
-    systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameSetupService.getProbeDeck());
-    systemsSelection.inactive = GameSetupService.getProbeHand();
+    systemsSelection.available = SystemsSelection.convertToSelectableSystems(StorageService.getProbeDeck());
+    systemsSelection.inactive = StorageService.getProbeHand();
     systemsSelection.maxSelected = 2;
     this.systemSelectorService.resultWatch$.subscribe(
       (response: SelectableSystem[]) => {
         response.forEach(selectedSystem => {
-          GameSetupService.drawProbeCard(selectedSystem.name);
+          GameUtilsService.drawProbeCard(selectedSystem.name);
         });
       },
       (err) => {

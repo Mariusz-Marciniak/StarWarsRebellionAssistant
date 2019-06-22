@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {GameSetupService} from '../game-controllers/game-setup.service';
 import {SidekickService} from '../sidekick/sidekick.service';
 import {NavigationExtras, Router} from '@angular/router';
 import {SelectableSystem, SystemsSelection} from '../system-selector/systems-selection';
 import {SystemSelectorService} from '../system-selector/system-selector.service';
+import {StorageService} from '../game-controllers/storage.service';
+import {GameUtilsService} from '../game-controllers/game-utils.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +20,12 @@ export class SendTroopsService {
 
   sendTroops() {
     const systemsSelection = new SystemsSelection();
-    systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameSetupService.getFreeSystems());
-    systemsSelection.inactive = GameSetupService.getSubjugatedSystems();
+    systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameUtilsService.getFreeSystems());
+    systemsSelection.inactive = StorageService.getSubjugatedSystems();
     this.systemSelectorService.resultWatch$.subscribe(
       (response: SelectableSystem[]) => {
         response.forEach(selectedSystem => {
-          GameSetupService.occupySystem(selectedSystem.name);
+          GameUtilsService.occupySystem(selectedSystem.name);
         });
       },
       (err) => {
@@ -46,12 +47,12 @@ export class SendTroopsService {
 
   removeTroops() {
     const systemsSelection = new SystemsSelection();
-    systemsSelection.available = SystemsSelection.convertToSelectableSystems(GameSetupService.getSubjugatedSystems());
-    systemsSelection.inactive = GameSetupService.getFreeSystems();
+    systemsSelection.available = SystemsSelection.convertToSelectableSystems(StorageService.getSubjugatedSystems());
+    systemsSelection.inactive = GameUtilsService.getFreeSystems();
     this.systemSelectorService.resultWatch$.subscribe(
       (response: SelectableSystem[]) => {
         response.forEach(selectedSystem => {
-          GameSetupService.freeSystem(selectedSystem.name);
+          GameUtilsService.freeSystem(selectedSystem.name);
         });
       },
       (err) => {

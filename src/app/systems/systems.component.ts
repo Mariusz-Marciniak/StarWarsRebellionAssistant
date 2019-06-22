@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {GameSetupService} from '../game-controllers/game-setup.service';
 import {System} from './system';
+import {StorageService} from '../game-controllers/storage.service';
+import {GameUtilsService} from '../game-controllers/game-utils.service';
 
 @Component({
   selector: 'app-systems',
@@ -17,15 +18,15 @@ export class SystemsComponent implements OnInit {
   }
 
   probeHand(): System[] {
-    return GameSetupService.getProbeHand();
+    return StorageService.getProbeHand();
   }
 
   subjugated(): System[] {
-    return GameSetupService.getSubjugatedSystems();
+    return StorageService.getSubjugatedSystems();
   }
 
   rebelBase(): System {
-    return GameSetupService.foundRebelBase();
+    return GameUtilsService.foundRebelBase();
   }
 
   positionStyle(system: System) {

@@ -1,21 +1,38 @@
 @import "../constants";
 @import "../../base-styles";
 
+$wizard-component-height: 60px;
+$space_between: 4px;
+
 .sw-wizard-panel {
-  background-color: $panel-background-color;
-  padding: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   img.logo {
-      width: 100%;
+    background-color: $logo-background-color;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: $wizard-component-height;
+  }
+
+  .separator {
+    height: $wizard-component-height;
+    width: 0px;
+    border-width: 1px;
+    border-color: #949494;
+    margin-left: $space_between;
+    border-style: solid;
   }
 
   .sw-wizard-button {
-    @extend .menu-button;
-    width: 98%;
-    background: $menu-button-gradient-color-from;
-    background-image: -webkit-linear-gradient(top, $menu-button-gradient-color-from, $menu-button-gradient-color-to);
-    background-image: -moz-linear-gradient(top, $menu-button-gradient-color-from, $menu-button-gradient-color-to);
-    background-image: -ms-linear-gradient(top, $menu-button-gradient-color-from, $menu-button-gradient-color-to);
-    background-image: -o-linear-gradient(top, $menu-button-gradient-color-from, $menu-button-gradient-color-to);
-    background-image: linear-gradient(to bottom, $menu-button-gradient-color-from, $menu-button-gradient-color-to);
+    @extend .rounded-button;
+    height: $wizard-component-height;
+    width: $wizard-component-height;
+    background: white;
+    border-color: #331235;
+    border-width: 1px;
+    margin-left: $space_between;
   }
 }

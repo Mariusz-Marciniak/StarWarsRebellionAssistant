@@ -1,8 +1,10 @@
-.menu-button {
+.rounded-button {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  color: #ffffff;
+}
+.menu-button {
+  color: $font-color;
   font-family: Impact, monospace;
   font-size: 20px;
   padding: 10px 20px 10px 20px;

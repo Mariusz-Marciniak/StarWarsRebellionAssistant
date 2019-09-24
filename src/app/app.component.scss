@@ -1,8 +1,15 @@
-.left-panel {
-  display: inline-block;
-  width: 19%;
+@import "constants";
+
+body {
+  background-color: $panel-background-color;
 }
+
 .main-panel {
-  float: right;
+  margin-left: auto;
+  margin-right: auto;
   width:80%;
+}
+
+.toolbar-panel {
+  height: 15%;
 }

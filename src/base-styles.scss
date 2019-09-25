@@ -1,23 +1,17 @@
-.rounded-button {
+.standard-button {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-}
-.menu-button {
-  color: $font-color;
-  font-family: Impact, monospace;
-  font-size: 20px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  display: block;
-  margin-bottom: 3px;
+  height: $button-height;
+  min-width: $button-height;
+  width: min-content;
   cursor: pointer;
+  background-color: $btn-background-color;
+  border-color: #331235;
+  border-width: 1px;
   &:disabled {
-    background: $disabled-button-gradient-color-to;
-    background-image: -webkit-linear-gradient(top, $disabled-button-gradient-color-from, $disabled-button-gradient-color-to);
-    background-image: -moz-linear-gradient(top, $disabled-button-gradient-color-from, $disabled-button-gradient-color-to);
-    background-image: -ms-linear-gradient(top, $disabled-button-gradient-color-from, $disabled-button-gradient-color-to);
-    background-image: -o-linear-gradient(top, $disabled-button-gradient-color-from, $disabled-button-gradient-color-to);
-    background-image: linear-gradient(to bottom, $disabled-button-gradient-color-from, $disabled-button-gradient-color-to);
+    background-color: $disabled-color;
+    border-color: red;
+    cursor: default;
   }
 }

@@ -12,6 +12,7 @@ import {MapModule} from '@marciniak/map';
 import {SystemSelectorComponent} from './system-selector/system-selector.component';
 
 const appRoutes: Routes = [
+  {path: '', component: SystemsComponent},
   {path: 'send-probe', component: SystemSelectorComponent},
   {path: 'send-troops', component: SystemSelectorComponent},
   {path: 'remove-troops', component: SystemSelectorComponent}

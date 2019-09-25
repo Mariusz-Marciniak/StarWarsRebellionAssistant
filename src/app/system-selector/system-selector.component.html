@@ -14,13 +14,13 @@
     </highlight-map>
   </div>
   <div class="footer">
+    <button class="cancel-button footer-component" (click)="cancelOperation()">Cancel</button>
+    <button class="confirmation-button footer-component" (click)="confirmSelection()" [disabled]="requirementsUnfulfilled()">Confirm</button>
     <div [innerHTML]="messageBoxMessage"
          [ngClass]="{
           'message-box': true,
           'error': errorMessage,
           'info': !errorMessage
           }"></div>
-    <button class="confirmation-button" (click)="confirmSelection()" [disabled]="requirementsUnfulfilled()">Confirm</button>
-    <button class="cancel-button" (click)="cancelOperation()">Cancel</button>
   </div>
 </span>

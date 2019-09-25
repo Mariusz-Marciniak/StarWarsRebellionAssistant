@@ -3,6 +3,7 @@ import {GameSetupService} from '../game-controllers/game-setup.service';
 import {GameStateService} from '../game-controllers/game-state.service';
 import {SendProbesService} from '../actions/send-probes.service';
 import {SendTroopsService} from '../actions/send-troops.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-wizard',
@@ -12,11 +13,13 @@ import {SendTroopsService} from '../actions/send-troops.service';
 export class WizardComponent {
 
   constructor(private sendProbesService: SendProbesService,
-              private sendTroopsService: SendTroopsService) {
+              private sendTroopsService: SendTroopsService,
+              private router: Router) {
   }
 
   newGame() {
     GameSetupService.newGame();
+    this.router.navigate(['/']);
   }
 
   standardSetup() {

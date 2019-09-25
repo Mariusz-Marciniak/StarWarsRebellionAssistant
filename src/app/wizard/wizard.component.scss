@@ -1,11 +1,12 @@
 @import "../constants";
 @import "../../base-styles";
 
-$wizard-component-height: 60px;
+$wizard-component-height: $button-height;
 $space_between: 4px;
 
 .sw-wizard-panel {
   margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
@@ -27,12 +28,7 @@ $space_between: 4px;
   }
 
   .sw-wizard-button {
-    @extend .rounded-button;
-    height: $wizard-component-height;
-    width: $wizard-component-height;
-    background: white;
-    border-color: #331235;
-    border-width: 1px;
+    @extend .standard-button;
     margin-left: $space_between;
   }
 }

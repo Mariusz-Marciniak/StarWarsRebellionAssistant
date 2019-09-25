@@ -6,17 +6,10 @@ import {SystemsComponent} from './systems/systems.component';
 import {WizardComponent} from './wizard/wizard.component';
 import {SelectOneComponent} from './select-one/select-one.component';
 import {SidekickComponent} from './sidekick/sidekick.component';
-import {RouterModule, Routes} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MapModule} from '@marciniak/map';
 import {SystemSelectorComponent} from './system-selector/system-selector.component';
-
-const appRoutes: Routes = [
-  {path: '', component: SystemsComponent},
-  {path: 'send-probe', component: SystemSelectorComponent},
-  {path: 'send-troops', component: SystemSelectorComponent},
-  {path: 'remove-troops', component: SystemSelectorComponent}
-];
+import {AppRoutingModule} from './app.routing.module';
 
 @NgModule({
   declarations: [
@@ -29,9 +22,9 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    MapModule
+    MapModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
